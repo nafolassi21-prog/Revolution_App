@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Révolution Africaine</title>
+
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.png" type="image/png">
+
+<style>
+body{
+background: linear-gradient(135deg,#000000,#7a0000);
+color:white;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
+margin:0;
+transition: background 0.3s, color 0.3s;
+}
+
+body.light{
+background: linear-gradient(135deg,#ffffff,#ffd700);
+color:black;
+}
+
+.container{
+padding:20px;
+max-width:400px;
+}
+
+h1{
+color:#FFD700;
+}
+
+body.light h1{
+color:#7a0000;
+}
+
+#citation{
+font-size:18px;
+margin:20px 0;
+min-height:80px;
+}
+
+button{
+padding:12px 20px;
+margin:5px;
+border:none;
+border-radius:25px;
+background:#FFD700;
+color:black;
+font-weight:bold;
+cursor:pointer;
+transition: background 0.3s, color 0.3s;
+}
+
+body.light button{
+background:#7a0000;
+color:white;
+}
+
+button:hover{
+background:white;
+color:black;
+}
+
+footer{
+margin-top:30px;
+font-size:12px;
+opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>✊🏾 Révolution</h1>
+
+<div id="citation">Clique pour commencer</div>
+
+<button onclick="nouvelleCitation()">Nouvelle Citation</button>
+<button onclick="partager()">Partager</button>
+<button onclick="sauvegarder()">Sauvegarder</button>
+<button onclick="toggleMode()">Mode Sombre/Clair</button>
+
+<footer>Créé par Mr NAFO</footer>
+</div>
+
+<script>
+// Citations
+let citations = [
+"La révolution africaine commence par l'éveil des consciences.",
+"Un Mali fort naît d'un peuple debout.",
+"La souveraineté n'est pas un cadeau mais une conquête.",
+"La jeunesse malienne est la force du changement.",
+"L'Afrique n'attend pas, elle agit.",
+"La révolution africaine commence dans l’esprit avant de se voir dans les rues.",
+"Un Mali conscient est plus puissant qu’une armée sans vision.",
+"L’Afrique ne mendie pas son avenir, elle le construit.",
+"Chaque génération a sa bataille, la nôtre est celle de la souveraineté.",
+"La liberté n’est pas donnée, elle se conquiert avec courage.",
+"Le Mali debout inspire toute l’Afrique.",
+"Le changement commence quand le peuple refuse la peur.",
+"Une Afrique unie est une force que personne ne peut briser.",
+"La jeunesse malienne est la clé du renouveau.",
+"Un peuple éveillé ne peut plus être manipulé.",
+"La révolution commence par la discipline personnelle.",
+"L’Afrique doit croire en elle-même avant que le monde y croie.",
+"Le Mali avance quand ses enfants travaillent ensemble.",
+"La souveraineté est une responsabilité, pas un slogan.",
+"Chaque citoyen est un acteur du changement.",
+"La conscience est l’arme la plus puissante d’un peuple.",
+"L’Afrique écrit une nouvelle page de son histoire.",
+"Le Mali fort repose sur un peuple uni.",
+"La révolution est d’abord mentale.",
+"La dignité africaine n’est pas négociable.",
+"Un pays grandit quand son peuple s’éduque.",
+"La liberté exige des sacrifices.",
+"Le Mali nouveau naît du courage collectif.",
+"L’Afrique n’est pas pauvre, elle est riche de son potentiel.",
+"La jeunesse est la flamme de la transformation.",
+"Un esprit libre construit une nation libre.",
+"Le changement durable commence par l’action.",
+"La solidarité africaine est notre force.",
+"Le Mali souverain est un Mali responsable.",
+"La révolution est un engagement quotidien.",
+"L’unité transforme les faiblesses en puissance.",
+"Chaque voix compte dans la construction nationale.",
+"L’Afrique mérite respect et autodétermination.",
+"Un peuple informé est un peuple invincible.",
+"La transformation commence par la vérité.",
+"Le Mali avance quand la jeunesse s’engage.",
+"La liberté sans discipline mène au chaos.",
+"L’Afrique debout ne pliera plus.",
+"Le courage collectif change l’histoire.",
+"La révolution est un éveil de conscience.",
+"Un Mali stable repose sur la justice.",
+"La dignité nationale est une priorité.",
+"L’Afrique forge son destin par le travail.",
+"Le progrès vient de l’unité.",
+"Une nation forte protège sa souveraineté.",
+"Le Mali écrit son avenir avec détermination.",
+"La révolution est une vision partagée.",
+"L’éducation est la base du renouveau africain.",
+"Un peuple uni ne tombe jamais longtemps.",
+"Le changement est une décision collective.",
+];
+
+// Nouvelle citation
+function nouvelleCitation(){
+let random = Math.floor(Math.random()*citations.length);
+document.getElementById("citation").innerText = citations[random];
+}
+
+// Partager
+function partager(){
+let text = document.getElementById("citation").innerText;
+if(navigator.share){
+navigator.share({text:text});
+}else{
+alert("Partager non supporté sur ce navigateur.");
+}
+}
+
+// Sauvegarder
+function sauvegarder(){
+let text = document.getElementById("citation").innerText;
+let citationsSauvegardees = JSON.parse(localStorage.getItem("sauvegarde")) || [];
+citationsSauvegardees.push(text);
+localStorage.setItem("sauvegarde", JSON.stringify(citationsSauvegardees));
+alert("Citation sauvegardée !");
+}
+
+// Mode sombre / clair
+function toggleMode(){
+document.body.classList.toggle("light");
+}
+</script>
+
+</body>
+</html>
